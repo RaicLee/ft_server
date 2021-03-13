@@ -1,12 +1,20 @@
-FROM	debian:buster
-MAINTAINER	jealee	jealee@student.42seoul.kr
+FROM		debian:buster
+MAINTAINER	jealee@student.42seoul.kr
 
-RUN	apt-get update
-RUN	apt-get	upgrade
-RUN	apt-get	-y install nginx
-RUN	apt-get -y install openssl
+RUN			apt-get update
+RUN			apt-get	upgrade
+RUN			apt-get install -y nginx
+RUN			apt-get install -y openssl
+RUN			apt-get install -y mariadb-server
+RUN 		apt-get install -y php-mysql
+RUN 		apt-get install -y php-mbstring
+RUN 		apt-get install -y openssl
+RUN 		apt-get install -y vim
+RUN 		apt-get install -y wget
+RUN 		apt-get install -y php7.3-fpm
 
+COPY		./srcs/init.sh	./
+COPY		./srcs/
 
-
-EXPOSE	80
-EXPOSE	443
+EXPOSE	80 443
+CMD	bash init.sh
