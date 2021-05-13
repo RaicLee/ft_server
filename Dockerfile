@@ -13,5 +13,6 @@ RUN 		apt-get install -y vim
 RUN 		apt-get install -y wget
 RUN 		apt-get install -y php7.3-fpm
 
-EXPOSE	80 443
-CMD	bash init.sh
+COPY		./srcs/init.sh ./
+COPY		./srcs/nginx-configuration ./tmp
+CMD			bash init.sh
