@@ -8,11 +8,18 @@ openssl req -newkey rsa:4096 -days 365 -nodes -x509 -keyout jealee_localhost.key
 mv jealee_localhost.key etc/ssl/private
 mv jealee_localhost.crt etc/ssl/certs
 
+#Nginx file copy
+cp -a /tmp/nginx-conf /etc/nginx/sites-available/
+
+
 #Wordpress
 wget https://wordpress.org/latest.tar.gz
 tar -xvf latest.tar.gz
 mv wordpress/ var/www/html/
 rm -rf latest.tar.gz
+
+#copy wordpress configuratuion file
+cp -a ./tmp/wp-config.php /var/www/html/wordpress/
 
 #Wordpress Database
 service mysql start
@@ -30,6 +37,7 @@ tar -xvf phpMyAdmin-5.0.2-all-languages.tar.gz
 mv phpMyAdmin-5.0.2-all-languages phpmyadmin
 mv phpmyadmin /var/www/html/
 rm -rf phpMyAdmin-5.0.2-all-languages.tar.gz
+cp -a ./tmp/phpmyadmin.config.inc.php /var/www/html/phpmyadmin/
 
 #DB for phpMyAdmin
 service mysql start
