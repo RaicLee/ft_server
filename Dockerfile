@@ -14,5 +14,7 @@ RUN 		apt-get install -y wget
 RUN 		apt-get install -y php7.3-fpm
 
 COPY		./srcs/init.sh ./
-COPY		./srcs/nginx-configuration ./tmp
+COPY		./srcs/nginx-configuration ./tmp/nginx-conf
+COPY		./srcs/wp-config.php ./tmp/wp-config.php
+COPY		./srcs/config.inc.php ./tmp/phpmyadmin.config.inc.php
 CMD			bash init.sh
