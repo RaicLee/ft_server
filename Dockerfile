@@ -7,7 +7,6 @@ RUN			apt-get install -y nginx
 RUN			apt-get install -y openssl
 RUN			apt-get install -y mariadb-server
 RUN 		apt-get install -y php-mysql
-RUN 		apt-get install -y php-mbstring
 RUN 		apt-get install -y openssl
 RUN 		apt-get install -y vim
 RUN 		apt-get install -y wget
