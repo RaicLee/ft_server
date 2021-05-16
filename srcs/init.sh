@@ -11,7 +11,6 @@ mv jealee_localhost.crt etc/ssl/certs
 #Nginx file copy
 cp -a ./tmp/default /etc/nginx/sites-available/
 
-
 #Wordpress
 wget https://wordpress.org/latest.tar.gz
 tar -xvf latest.tar.gz
@@ -37,7 +36,7 @@ cp -a ./tmp/config.inc.php /var/www/html/phpmyadmin/
 
 #DB for phpMyAdmin
 service nginx start
-service mysql start
+service mysql restart
 service php7.3-fpm start
 mysql < var/www/html/phpmyadmin/sql/create_tables.sql
 service --status-all
