@@ -5,6 +5,7 @@ echo "Generating SSL key and Certifications"
 
 #x509 cert since "Error Occurs"
 openssl req -newkey rsa:2048 -days 365 -nodes -x509 -keyout jealee_localhost.key -out jealee_localhost.crt -subj "/C=KR/ST=Seoul/L=Seocho-gu/O=42Seoul/OU=GON/CN=localhost"
+chmod 600 jealee_localhost.key jealee_localhost.crt
 mv jealee_localhost.key etc/ssl/private
 mv jealee_localhost.crt etc/ssl/certs
 
@@ -34,7 +35,7 @@ mv phpmyadmin /var/www/html/
 rm -rf phpMyAdmin-5.0.2-all-languages.tar.gz
 cp -a ./tmp/config.inc.php /var/www/html/phpmyadmin/
 
-#DB for phpMyAdmin
+
 service nginx start
 service mysql restart
 service php7.3-fpm start
@@ -42,4 +43,6 @@ mysql < var/www/html/phpmyadmin/sql/create_tables.sql
 service --status-all
 
 echo "SUCEESFULLY FINISHED"
+chown -R www-data:www-data /var/www/*
+chmod 755 /var/www/*
 bash 
